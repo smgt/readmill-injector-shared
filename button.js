@@ -32,7 +32,10 @@ var Readmill = {
   appendChild: function(targets, button, insertAt) {
     var targets = document.querySelectorAll(targets);
     Array.prototype.forEach.call(targets, function(el) {
-      el.parentNode.appendChild(button(el));
+      if(!el.classList.contains("readmill-inject")) {
+        el.parentNode.appendChild(button(el));
+        el.classList.add("readmill-inject");
+      }
     });
   },
 
