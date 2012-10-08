@@ -8,14 +8,16 @@ var Readmill = {
     }
 
     var container = document.createElement("div");
+    container.classList.add("send-to-readmill-wrapper");
 
     if(callback) {
       container = callback(container);
     }
 
     params.push('display=' + displayClass);
-    params.push('origin_domain=' + encodeURIComponent(document.domain));
+    params.push('origin_domain=' + encodeURIComponent(window.location.protocol+"//"+document.domain));
     params.push('download_url=' + encodeURIComponent(url));
+    params.push('alt=a');
 
     src = 'https://widgets.readmill.com/send';
     src += '?' + params.join('&');
@@ -40,11 +42,11 @@ var Readmill = {
     switch(displayClass) {
       case 'small':
         style += 'width: 72px !important; height: 26px !important; ';
-        placeHolderUrl = 'https://platform.readmill.com/assets/btn_ph_str_small.png';
+        placeHolderUrl = '//d3kdyw6hgzoh5r.cloudfront.net/assets/widgets/btn_str_small-05a10061a2250cba9d18f9e22ec5e87a.png';
         break;
       case 'large':
         style += 'width: 170px !important; height: 40px !important;';
-        placeHolderUrl = 'https://platform.readmill.com/assets/btn_ph_str_large.png';
+        placeHolderUrl = '//d3kdyw6hgzoh5r.cloudfront.net/assets/widgets/btn_str_large-48f37b15588d9797c5e10d12680ebac3.png';
         break;
     }
 
