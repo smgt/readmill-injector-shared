@@ -30,8 +30,12 @@ var Readmill = {
   },
 
   appendChild: function(targets, button, insertAt) {
-    var targets = document.querySelectorAll(targets);
-    Array.prototype.forEach.call(targets, function(el) {
+    if(targets instanceof Array) {
+      var elements = targets;
+    } else {
+      var elements = document.querySelectorAll(targets);
+    }
+    Array.prototype.forEach.call(elements, function(el) {
       if(!el.classList.contains("readmill-inject")) {
         el.parentNode.appendChild(button(el));
         el.classList.add("readmill-inject");
